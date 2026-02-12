@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arlian Craft - Exquisite Floral Artistry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --glass-white: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --primary: #1a1a1a;
+            --secondary: #2d2d2d;
+            --accent: #404040;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --gold: #d4af37;
+            --dark-glass: rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #262626 100%);
+            color: var(--text-primary);
+            height: 100vh;
+            position: relative;
+        }
+
+        /* ===== ELEGANT BACKGROUND ===== */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .elegant-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        .floating-orbs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            animation: float-orb 25s infinite ease-in-out;
+        }
+
+        .orb:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212,175,55,0.3), transparent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+            top: 50%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .orb:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(212,175,55,0.25), transparent);
+            bottom: 10%;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float-orb {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1);
+            }
+            33% { 
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% { 
+                transform: translate(-30px, 30px) scale(0.95);
+            }
+        }
+
+        /* ===== GLASSMORPHISM CONTAINERS ===== */
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            z-index: 10;
+            opacity: 0;
+            transform: scale(0.98);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .page.active {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .glass-container {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 60px;
+            max-width: 1400px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 
+                0 8px 32px 0 rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 80px rgba(212, 175, 55, 0.05);
+            position: relative;
+        }
+
+        /* Elegant Scrollbar */
+        .glass-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .glass-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .glass-container::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.5);
+            border-radius: 10px;
+        }
+
+        .glass-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(212, 175, 55, 0.7);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav-glass {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 15px 35px;
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            font-weight: 500;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.1));
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .nav-btn:hover::before,
+        .nav-btn.active::before {
+            opacity: 1;
+        }
+
+        .nav-btn:hover,
+        .nav-btn.active {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== HOME PAGE ===== */
+        .home-content {
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 7.5em;
+            font-weight: 300;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 8px;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .ornament {
+            font-size: 2em;
+            margin: 35px 0;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            max-width: 750px;
+            margin: 0 auto 50px;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .glass-btn {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 40px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 500;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .glass-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .glass-btn.primary {
+            background: linear-gradient(135deg, rgba(212,175,55,0.3), rgba(212,175,55,0.1));
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        /* ===== GALLERY PAGE ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .gallery-card {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            aspect-ratio: 1;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+                        0 0 50px rgba(212, 175, 55, 0.1);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8em;
+            background: linear-gradient(135deg, rgba(40,40,40,0.8), rgba(30,30,30,0.9));
+            position: relative;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 30px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-card:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6em;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--gold);
+        }
+
+        .gallery-desc {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        /* ===== PRICELIST PAGE ===== */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .price-card {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 180px;
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), transparent);
+            z-index: 0;
+        }
+
+        .price-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6),
+                        0 0 60px rgba(212, 175, 55, 0.08);
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, rgba(212,175,55,0.9), rgba(212,175,55,0.7));
+            color: #000;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.7em;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .price-header {
+            padding: 50px 35px 30px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-icon {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 20px rgba(212, 175, 55, 0.3));
+        }
+
+        .price-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2em;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .price-desc {
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .price-body {
+            padding: 0 35px 40px;
+        }
+
+        .price-amount {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2em;
+            font-weight: 400;
+            background: linear-gradient(135deg, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .currency {
+            font-size: 0.35em;
+            vertical-align: super;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+
+        .features li {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .check {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .order-btn {
+            width: 100%;
+            background: rgba(212, 175, 55, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 16px;
+            border-radius: 20px;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .order-btn:hover {
+            background: rgba(212, 175, 55, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        /* ===== CONTACT PAGE ===== */
+        .contact-content {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            padding: 55px 45px;
+            margin-top: 50px;
+        }
+
+        .avatar {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5em;
+            margin: 0 auto 35px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 0 0 30px 10px rgba(212, 175, 55, 0);
+            }
+        }
+
+        .contact-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5em;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .contact-role {
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            font-size: 1em;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 35px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-icon {
+            font-size: 1.6em;
+            min-width: 35px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .info-text {
+            flex: 1;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .info-label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+        }
+
+        .wa-btn {
+            background: linear-gradient(135deg, #25D366, #1ea952);
+            border: none;
+            padding: 18px 45px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.05em;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.25);
+            letter-spacing: 0.5px;
+        }
+
+        .wa-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+        }
+
+        /* ===== PAGE TITLES ===== */
+        .page-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5em;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1em;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .glass-container {
+                padding: 35px 25px;
+                border-radius: 20px;
+            }
+
+            .logo-main {
+                font-size: 4em;
+                letter-spacing: 4px;
+            }
+
+            .tagline {
+                font-size: 1em;
+                letter-spacing: 3px;
+            }
+
+            .page-title {
+                font-size: 2.8em;
+            }
+
+            .nav-glass {
+                bottom: 20px;
+                padding: 12px 20px;
+                gap: 10px;
+            }
+
+            .nav-btn {
+                padding: 10px 18px;
+                font-size: 0.9em;
+            }
+
+            .gallery-grid,
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                padding: 40px 30px;
+            }
+        }
+
+        /* ===== ELEGANT LOADER ===== */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #262626 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6em;
+            font-weight: 300;
+            color: white;
+            margin-bottom: 30px;
+            letter-spacing: 8px;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { 
+                opacity: 0.8;
+                text-shadow: 0 0 20px rgba(212,175,55,0.3);
+            }
+            50% { 
+                opacity: 1;
+                text-shadow: 0 0 40px rgba(212,175,55,0.5);
+            }
+        }
+
+        .loader-text {
+            font-size: 1.1em;
+            letter-spacing: 5px;
+            color: var(--text-secondary);
+            margin-bottom: 45px;
+            font-weight: 300;
+        }
+
+        .loader-line {
+            width: 200px;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            animation: loading 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loading {
+            to { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+        <div class="loader-logo">ARLIAN CRAFT</div>
+        <div class="loader-text">EXQUISITE FLORAL ARTISTRY</div>
+        <div class="loader-line"></div>
+    </div>
+
+    <!-- ANIMATED BACKGROUND -->
+    <div class="bg-animation">
+        <div class="elegant-grid"></div>
+        <div class="floating-orbs">
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav-glass">
+        <button class="nav-btn active" onclick="showPage('home')">
+            <span>Home</span>
+        </button>
+        <button class="nav-btn" onclick="showPage('gallery')">
+            <span>Gallery</span>
+        </button>
+        <button class="nav-btn" onclick="showPage('pricelist')">
+            <span>Collection</span>
+        </button>
+        <button class="nav-btn" onclick="showPage('contact')">
+            <span>Contact</span>
+        </button>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div class="page active" id="home">
+        <div class="glass-container">
+            <div class="home-content">
+                <div class="logo-main">ARLIAN CRAFT</div>
+                <div class="ornament">◆</div>
+                <div class="tagline">Exquisite Floral Artistry</div>
+                <p class="subtitle">
+                    Crafting distinguished floral arrangements with meticulous attention to detail. 
+                    Each creation is thoughtfully designed to elevate your most cherished moments 
+                    with timeless elegance and sophistication.
+                </p>
+                <div class="cta-buttons">
+                    <button class="glass-btn primary" onclick="showPage('pricelist')">
+                        View Collection
+                    </button>
+                    <button class="glass-btn" onclick="showPage('contact')">
+                        Get in Touch
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY PAGE -->
+    <div class="page" id="gallery">
+        <div class="glass-container">
+            <h1 class="page-title">Gallery</h1>
+            <p class="page-subtitle">Curated Floral Arrangements</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <div class="gallery-image">🌹</div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Classic Rose</div>
+                        <div class="gallery-desc">TIMELESS ELEGANCE</div>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-image">💐</div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Mixed Arrangement</div>
+                        <div class="gallery-desc">REFINED COMPOSITION</div>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-image">🌸</div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Delicate Blossoms</div>
+                        <div class="gallery-desc">SOPHISTICATED GRACE</div>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-image">🌺</div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Exotic Selection</div>
+                        <div class="gallery-desc">DISTINCTIVE BEAUTY</div>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-image">🏵️</div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Premium Series</div>
+                        <div class="gallery-desc">EXCLUSIVE DESIGN</div>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-image">🌻</div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Radiant Blooms</div>
+                        <div class="gallery-desc">VIBRANT ESSENCE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRICELIST PAGE -->
+    <div class="page" id="pricelist">
+        <div class="glass-container">
+            <h1 class="page-title">Collection</h1>
+            <p class="page-subtitle">Distinguished Floral Arrangements</p>
+            
+            <div class="price-grid">
+                <!-- Elegant -->
+                <div class="price-card">
+                    <div class="price-header">
+                        <div class="price-icon">🌹</div>
+                        <div class="price-name">Elegant</div>
+                        <div class="price-desc">REFINED SELECTION</div>
+                    </div>
+                    <div class="price-body">
+                        <div class="price-amount">
+                            <div class="amount">
+                                <span class="currency">Rp</span>175.000
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li><span class="check">◆</span> 6-8 premium stems</li>
+                            <li><span class="check">◆</span> Curated color palette</li>
+                            <li><span class="check">◆</span> Designer vessel</li>
+                            <li><span class="check">◆</span> Sophisticated wrapping</li>
+                            <li><span class="check">◆</span> Personalized card</li>
+                        </ul>
+                        <button class="order-btn" onclick="contactWhatsApp('Elegant Collection', '175.000')">
+                            Inquire Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Distinguished -->
+                <div class="price-card">
+                    <div class="badge">SIGNATURE</div>
+                    <div class="price-header">
+                        <div class="price-icon">💐</div>
+                        <div class="price-name">Distinguished</div>
+                        <div class="price-desc">PREMIUM ARRANGEMENT</div>
+                    </div>
+                    <div class="price-body">
+                        <div class="price-amount">
+                            <div class="amount">
+                                <span class="currency">Rp</span>285.000
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li><span class="check">◆</span> 12-15 premium stems</li>
+                            <li><span class="check">◆</span> Bespoke composition</li>
+                            <li><span class="check">◆</span> Artisan vessel</li>
+                            <li><span class="check">◆</span> Luxury presentation</li>
+                            <li><span class="check">◆</span> Custom message</li>
+                            <li><span class="check">◆</span> Delicate accents</li>
+                        </ul>
+                        <button class="order-btn" onclick="contactWhatsApp('Distinguished Collection', '285.000')">
+                            Inquire Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Prestige -->
+                <div class="price-card">
+                    <div class="price-header">
+                        <div class="price-icon">🌸</div>
+                        <div class="price-name">Prestige</div>
+                        <div class="price-desc">LUXURY ENSEMBLE</div>
+                    </div>
+                    <div class="price-body">
+                        <div class="price-amount">
+                            <div class="amount">
+                                <span class="currency">Rp</span>450.000
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li><span class="check">◆</span> 20-25 premium stems</li>
+                            <li><span class="check">◆</span> Extensive selection</li>
+                            <li><span class="check">◆</span> Statement vessel</li>
+                            <li><span class="check">◆</span> Couture wrapping</li>
+                            <li><span class="check">◆</span> Exclusive card</li>
+                            <li><span class="check">◆</span> Complementary botanicals</li>
+                            <li><span class="check">◆</span> Preview service</li>
+                        </ul>
+                        <button class="order-btn" onclick="contactWhatsApp('Prestige Collection', '450.000')">
+                            Inquire Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Magnificent -->
+                <div class="price-card">
+                    <div class="badge">EXCLUSIVE</div>
+                    <div class="price-header">
+                        <div class="price-icon">💎</div>
+                        <div class="price-name">Magnificent</div>
+                        <div class="price-desc">HAUTE COLLECTION</div>
+                    </div>
+                    <div class="price-body">
+                        <div class="price-amount">
+                            <div class="amount">
+                                <span class="currency">Rp</span>650.000
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li><span class="check">◆</span> 25+ imported blooms</li>
+                            <li><span class="check">◆</span> Grand presentation</li>
+                            <li><span class="check">◆</span> Refined embellishments</li>
+                            <li><span class="check">◆</span> Premium materials</li>
+                            <li><span class="check">◆</span> Gilded accents</li>
+                            <li><span class="check">◆</span> Complete documentation</li>
+                            <li><span class="check">◆</span> Concierge delivery</li>
+                        </ul>
+                        <button class="order-btn" onclick="contactWhatsApp('Magnificent Collection', '650.000')">
+                            Inquire Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bespoke -->
+                <div class="price-card">
+                    <div class="price-header">
+                        <div class="price-icon">🎨</div>
+                        <div class="price-name">Bespoke</div>
+                        <div class="price-desc">CUSTOM CREATION</div>
+                    </div>
+                    <div class="price-body">
+                        <div class="price-amount">
+                            <div class="amount" style="font-size: 2em;">
+                                From 200K
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li><span class="check">◆</span> Personalized selection</li>
+                            <li><span class="check">◆</span> Tailored dimensions</li>
+                            <li><span class="check">◆</span> Custom aesthetics</li>
+                            <li><span class="check">◆</span> Design consultation</li>
+                            <li><span class="check">◆</span> Premium enhancements</li>
+                            <li><span class="check">◆</span> Artisan craftsmanship</li>
+                        </ul>
+                        <button class="order-btn" onclick="contactWhatsApp('Bespoke Creation', 'Custom')">
+                            Schedule Consultation
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Curated Gift -->
+                <div class="price-card">
+                    <div class="price-header">
+                        <div class="price-icon">🎁</div>
+                        <div class="price-name">Curated Gift</div>
+                        <div class="price-desc">COMPLETE ENSEMBLE</div>
+                    </div>
+                    <div class="price-body">
+                        <div class="price-amount">
+                            <div class="amount">
+                                <span class="currency">Rp</span>350.000
+                            </div>
+                        </div>
+                        <ul class="features">
+                            <li><span class="check">◆</span> Signature arrangement</li>
+                            <li><span class="check">◆</span> Artisan confections</li>
+                            <li><span class="check">◆</span> Luxury fragrance</li>
+                            <li><span class="check">◆</span> Personalized note</li>
+                            <li><span class="check">◆</span> Elegant presentation</li>
+                            <li><span class="check">◆</span> Perfect for occasions</li>
+                        </ul>
+                        <button class="order-btn" onclick="contactWhatsApp('Curated Gift Set', '350.000')">
+                            Inquire Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div class="page" id="contact">
+        <div class="glass-container">
+            <div class="contact-content">
+                <h1 class="page-title">Contact</h1>
+                <p class="page-subtitle">Connect With Our Atelier</p>
+                
+                <div class="contact-card">
+                    <div class="avatar">💐</div>
+                    <div class="contact-name">Arlian Craft</div>
+                    <div class="contact-role">FLORAL ATELIER</div>
+                    
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <div class="info-icon">📍</div>
+                            <div class="info-text">
+                                <span class="info-label">Location</span>
+                                Jl. Botanical Avenue No. 88<br>
+                                Metropolitan Area, Indonesia
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">🕐</div>
+                            <div class="info-text">
+                                <span class="info-label">Hours of Operation</span>
+                                Monday - Sunday: 08:00 - 21:00
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">📧</div>
+                            <div class="info-text">
+                                <span class="info-label">Email</span>
+                                atelier@arliancraft.com
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/6281234567890?text=Good%20day%2C%20I%20would%20like%20to%20inquire%20about%20your%20floral%20arrangements." class="wa-btn">
+                        <span>💬</span> WhatsApp Inquiry
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hide loader after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1800);
+        });
+
+        // Page navigation
+        function showPage(pageName) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            document.getElementById(pageName).classList.add('active');
+
+            // Update navigation buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+        }
+
+        // WhatsApp contact function
+        function contactWhatsApp(productName, price) {
+            const message = `Good day,\n\nI am interested in the following:\n\n${productName}\nPrice: Rp ${price}\n\nI would appreciate further details regarding availability and customization options.\n\nThank you.`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/6281234567890?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Prevent scrolling
+        document.body.style.overflow = 'hidden';
+    </script>
+</body>
+</html>
